@@ -1,0 +1,21 @@
+// File name: projects/01/Mux.hdl
+
+/** 
+ * Multiplexor:
+ * out = a if sel == 0
+ *       b otherwise
+ */
+ 
+ /* 'I' is added to a name to indicate Inverse of a pin */
+
+CHIP Mux {
+    IN a, b, sel;
+    OUT out;
+
+    PARTS:
+		  Not(in=sel, out=selI);
+		  And(a=a, b=selI, out=aselI);
+		  And(a=b, b=sel, out=bs);
+		  Or(a=aselI, b=bs, out=out);
+		
+}
